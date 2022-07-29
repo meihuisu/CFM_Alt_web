@@ -5,7 +5,7 @@ $header = getHeader("Viewer");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Community Fault Model Viewer - CFM6_Alt_web</title>
+    <title>Community Fault Model Viewer</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -160,7 +160,7 @@ $header = getHeader("Viewer");
 <!-- top-intro -->
     <div id="top-intro" style="display:">
 <p>
-The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fault Model (CFM)</a> are three-dimensional and non-planar; however, to simplify browsing the model, the viewer below provides a two-dimensional map-based view of the SCEC CFM version 5.3 preferred fault set. The alternative fault representations are only provided in the complete CFM archive available for download on the <a href="https://www.scec.org/research/cfm">CFM homepage</a>. Here, the viewer allows users to view and download fault geometry data as well as metadata for selected faults rather than downloading the entire CFM model archive. Once faults are selected, the “PLOT3D” button can be used to view the selected faults in a basic CAD-like environment. See the user guide for more details and site usage instructions.
+The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fault Model (CFM6-ALT)</a> are three-dimensional and non-planar; however, to simplify browsing the model, the viewer below provides a two-dimensional map-based view of the SCEC CFM version 5.3 preferred fault set. The alternative fault representations are only provided in the complete CFM archive available for download on the <a href="https://www.scec.org/research/cfm">CFM homepage</a>. Here, the viewer allows users to view and download fault geometry data as well as metadata for selected faults rather than downloading the entire CFM model archive. Once faults are selected, the “PLOT3D” button can be used to view the selected faults in a basic CAD-like environment. See the user guide for more details and site usage instructions.
 </p>
     </div> <!-- top-intro -->
 
@@ -169,7 +169,7 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
         <div class="col justify-content-end custom-control-inline">
             <div style="display:none;" id="external_leaflet_control"></div>
 
-            <button id="colorBtn" class="btn cfm-top-small-btn" onMouseEnter="expandColorsControl()">
+            <button id="colorBtn" class="btn cfm-small-btn" onMouseEnter="expandColorsControl()">
                 <span class="glyphicon glyphicon-star"></span></button>
             <div id="itemCount"></div>
             <div id="downloadSelect" class="cfm-control-download" onMouseLeave="removeDownloadControl()"></div>
@@ -400,7 +400,7 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
 	<div class="col-2 mt-1">
 <input id="fileKML" type='file' onchange='uploadKMLFile(this.files)' style='display:none;'></input>
 <button id="kmlBtn" class="btn" onclick='javascript:document.getElementById("fileKML").click();' title="Upload your own kml/kmz file to be displayed on the map interface. We currently support points, lines, paths, polygons, and image overlays (kmz only)." style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.25rem 0.5rem;"><span>Upload kml/kmz</span></button>
-<button id="kmlSelectBtn" class="btn" title="Show/Hide uploaded kml/kmz files"  style="color:#990000;background:white;padding:0.25rem 0.5rem;display:none" onclick='updateKMLSelect()'  data-toggle="modal" data-target="#modalkmlselect"><span class="fas fa-circle"></span></button>
+<button id="kmlSelectBtn" class="btn cfm-small-btn" title="Show/Hide uploaded kml/kmz files"  style="padding:0.25rem 0.5rem;display:none" onclick='updateKMLSelect()'  data-toggle="modal" data-target="#modalkmlselect"><span class="fas fa-circle"></span></button>
         </div>
 <!-- Sesimicity -->
         <div class="col-3 mt-1 pl-0"> 
@@ -424,7 +424,7 @@ class="custom-select custom-select-sm" style="width:16rem; padding:0.25rem 0.5re
    <option value="historicaltime">Historical by time</option>
 -->
 </select>
-<button id="toggleHistoricalBtn" class="btn" title="Show/Hide significant historic earthquakes (>M6) since 1900" style="color:red;background:white" onclick="toggleHistorical()"><span class="fas fa-circle fa-xs"></span></button>
+<button id="toggleHistoricalBtn" class="btn cfm-small-2-btn" title="Show/Hide significant historic earthquakes (M6+) since 1900" style="margin-left:0.25rem" onclick="toggleHistorical()"><span class="fas fa-circle fa-xs"></span></button>
 </div>
         </div>
 <!-- Map Select -->
