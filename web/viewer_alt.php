@@ -178,7 +178,8 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
 
 <!-- top-control -->
     <div id="top-control">
-      <div id="controls-container" class="row d-flex mb-1" style="display:none" >
+      <div id="controls-container" class="row d-flex mb-1" style="display:" >
+<!-- XX RESET -->
         <div class="col-3 mb-0">
              <div class="input-group filters" style="min-width:68%">
                 <select id="search-filter-type" class="custom-select">
@@ -396,19 +397,27 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
                 </div>
             </div>
         </div>
-<!-- upload KML/KMZ overlay -->
-	<div class="col-2 mt-1">
+	<div class="col-2 pl-0 mt-1">
+<div class="row">
+
+<!-- XX switch between preferred/alternative set -->
+<button id="dbGo2Btn" class="btn" onclick='updateDBSet();' title="Go to Preferred set" style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.25rem 0.5rem;margin-left:10px;margin-right:10px;"><span>Official</span></button>
+
+<!-- XX upload KML/KMZ overlay -->
 <input id="fileKML" type='file' onchange='uploadKMLFile(this.files)' style='display:none;'></input>
 <button id="kmlBtn" class="btn" onclick='javascript:document.getElementById("fileKML").click();' title="Upload your own kml/kmz file to be displayed on the map interface. We currently support points, lines, paths, polygons, and image overlays (kmz only)." style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.25rem 0.5rem;"><span>Upload kml/kmz</span></button>
+
 <button id="kmlSelectBtn" class="btn cfm-small-btn" title="Show/Hide uploaded kml/kmz files"  style="padding:0.25rem 0.5rem;display:none" onclick='updateKMLSelect()'  data-toggle="modal" data-target="#modalkmlselect"><span class="fas fa-circle"></span></button>
-        </div>
-<!-- Sesimicity -->
-        <div class="col-3 mt-1 pl-0"> 
-<div id="loadSeismicity" class="row" style="width:20rem;display:">
-<button id="quakesBtn" class="btn" onClick="loadSeismicity()" title="This loads the updated Hauksson et al. (2012) and Ross et al. (2019) relocated earthquake catalogs and provides a pull-down menu with options to color by depth, magnitude, or time. Significant historical events (1900-2021 >M6.0) are shown with red dots. These can be turned on/off by clicking on the red dot which appears here once the catalogs have been loaded" style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.25rem 0.5rem;display:">Load relocated seismicity</button>
 
 </div>
-<div id="showSeismicity" class="row" style="width:20rem; display:none">
+        </div>
+        <div class="col-3 mt-1 pl-0"> 
+<!-- XX Sesimicity -->
+<div id="loadSeismicity" class="row" style="width:20rem;display:; margin-left:0.25rem">
+<button id="quakesBtn" class="btn" onClick="loadSeismicity()" title="This loads the updated Hauksson et al. (2012) and Ross et al. (2019) relocated earthquake catalogs and provides a pull-down menu with options to color by depth, magnitude, or time. Significant historical events (1900-2021 >M6.0) are shown with red dots. These can be turned on/off by clicking on the red dot which appears here once the catalogs have been loaded" style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.25rem 0.5rem;display:">Load relocated seismicity</button>
+</div>
+
+<div id="showSeismicity" class="row" style="width:20rem; display:none; margin-left:0.25rem">
 <select id="seismicitySelect" onchange="changePixiOverlay(this.value)"
 class="custom-select custom-select-sm" style="width:16rem; padding:0.25rem 0.5rem">
    <option value="none">No seismicity</option>
@@ -468,7 +477,7 @@ class="custom-select custom-select-sm" style="width:16rem; padding:0.25rem 0.5re
             <div id="phpResponseTxt"></div>
         </div>
 
-        <div id="top-map" class="col-7">
+        <div id="top-map" class="col-7" style="padding-left:0.25rem">
             <div class="w-100 mb-1" id='CFM_plot'
 		 style="position:relative;border:solid 1px #ced4da; height:576px;">
             </div>
@@ -611,7 +620,6 @@ class="custom-select custom-select-sm" style="width:16rem; padding:0.25rem 0.5re
       <div class="modal-footer justify-content-center" id="modal3DFooter">
 
         <div class="spinDialog" style="position:absolute;top:40%;left:50%; z-index:9999;">
-<!-- XX -->
           <div id="spinIconFor3D" align="center" style="display:none;"><i class="glyphicon glyphicon-cog fa-spin" style="color:red"></i></div>
         </div>
 
