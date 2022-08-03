@@ -1,6 +1,7 @@
 <?php
 require_once("php/navigation.php");
 $header = getHeader("Viewer");
+$cfm_dataset = getenv("CFM_DATASET");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -134,7 +135,7 @@ $header = getHeader("Viewer");
     </script>
 </head>
 <body>
-<?php echo $header; ?>
+<?php echo $header; echo $cfm_dataset ?>
 <div class="container">
 
 <div class="main">
@@ -160,7 +161,7 @@ $header = getHeader("Viewer");
 <!-- top-intro -->
     <div id="top-intro" style="display:">
 <p>
-The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fault Model (CFM6-ALT)</a> are three-dimensional and non-planar; however, to simplify browsing the model, the viewer below provides a two-dimensional map-based view of the SCEC CFM version 5.3 preferred fault set. The alternative fault representations are only provided in the complete CFM archive available for download on the <a href="https://www.scec.org/research/cfm">CFM homepage</a>. Here, the viewer allows users to view and download fault geometry data as well as metadata for selected faults rather than downloading the entire CFM model archive. Once faults are selected, the “PLOT3D” button can be used to view the selected faults in a basic CAD-like environment. See the user guide for more details and site usage instructions.
+The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fault Model</a> are three-dimensional and non-planar; however, to simplify browsing the model, the viewer below provides a two-dimensional map-based view of the SCEC CFM version 5.3 preferred fault set. The alternative fault representations are only provided in the complete CFM archive available for download on the <a href="https://www.scec.org/research/cfm">CFM homepage</a>. Here, the viewer allows users to view and download fault geometry data as well as metadata for selected faults rather than downloading the entire CFM model archive. Once faults are selected, the “PLOT3D” button can be used to view the selected faults in a basic CAD-like environment. See the user guide for more details and site usage instructions.
 </p>
     </div> <!-- top-intro -->
 
@@ -401,7 +402,7 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
 <div class="row">
 
 <!-- XX switch between preferred/alternative set -->
-<button id="dbGo2Btn" class="btn" onclick='updateDBSet();' title="Go to Preferred set" style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.25rem 0.5rem;margin-left:10px;margin-right:10px;"><span>Official</span></button>
+<button id="dbGo2Btn" class="btn" onclick='updateDBSet();' title="Go to Preferred set" style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.25rem 0.5rem;margin-left:10px;margin-right:10px;"><span>???</span></button>
 
 <!-- XX upload KML/KMZ overlay -->
 <input id="fileKML" type='file' onchange='uploadKMLFile(this.files)' style='display:none;'></input>

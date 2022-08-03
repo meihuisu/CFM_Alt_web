@@ -17,6 +17,9 @@ services:
       dockerfile: Dockerfile-web
       context: ./
     restart: always
+    environment:
+      CFM_DB: CFM6_preferred_db 
+      CFM_DATASET: CFM6_PREFERRED
     ports:
       - 8082:8081
       - 8083:80
@@ -26,6 +29,9 @@ services:
       dockerfile: Dockerfile-altweb
       context: ./
     restart: always
+    environment:
+      CFM_DB: CFM6_alt_db 
+      CFM_DATASET: CFM6_ALTERNATIVE
     ports:
       - 8086:8081
       - 8087:80
