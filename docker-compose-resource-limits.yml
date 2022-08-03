@@ -6,6 +6,6 @@ services:
     mem_limit: 5g
     cpus: 3
 
-  web:
+  altweb:
     mem_limit: 5g
     cpus: 3

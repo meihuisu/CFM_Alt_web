@@ -12,7 +12,7 @@ services:
       name: edric
       POSTGRES_PASSWORD: example
 
-  web:
+  altweb:
     build:
       dockerfile: Dockerfile-web
       context: ./

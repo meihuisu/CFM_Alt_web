@@ -3,10 +3,10 @@
    yum install git
 
    git clone https://github.com/meihuisu/CFM_Alt_web.git
-## link the web/php/util.php
 
+## echo "!!! running doc/run-as-me !!!'
    cp CFM_Alt_web/web/php/util_alt.php CFM_Alt_web/web/php/util.php
-   cp CFM_Alt_web/web/viewer_alt.php CFM_Alt_web/web/viewer.php
+   cp CFM_Alt_web/web/viewer_alt.php CFM_Alt_web/web/index.php
 
    yum install gcc
    yum install readline-devel
