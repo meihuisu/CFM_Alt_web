@@ -11,8 +11,5 @@ RUN yum install -y httpd && \
 COPY ./doc/cfm.conf /etc/httpd/conf.d/
 COPY ./custom-php.ini /etc/php.d/custom-php.ini
 
-COPY  ./template/web/php/util_preferred.php /app/web/php/util.php
-COPY  ./template/web/viewer_preferred.php /app/web/index.php
-
 CMD ["apachectl", "-D", "FOREGROUND"]
 
