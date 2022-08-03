@@ -12,8 +12,8 @@ COPY ./doc/cfm.conf /etc/httpd/conf.d/
 COPY ./custom-php.ini /etc/php.d/custom-php.ini
 
 ## link the web/php/util.php
-COPY ./web/php/util_alt.php /app/web/php/util.php
-COPY ./web/viewer_alt.php /app/web/index.php
+COPY ./web/php/util_preferred.php /app/web/php/util.php
+COPY ./web/viewer_preferred.php /app/web/index.php
 
 CMD ["apachectl", "-D", "FOREGROUND"]
 
