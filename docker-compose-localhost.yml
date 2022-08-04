@@ -20,6 +20,8 @@ services:
     environment:
       CFM_DB: CFM6_preferred_db 
       CFM_DATASET: CFM6_PREFERRED
+      CFM_BTN_LABEL: ALT
+      CFM_DB_PORT: 8086 
     ports:
       - 8082:8081
       - 8083:80
@@ -32,6 +34,8 @@ services:
     environment:
       CFM_DB: CFM6_alt_db 
       CFM_DATASET: CFM6_ALTERNATIVE
+      CFM_BTN_LABEL: MAIN 
+      CFM_DB_PORT: 8082 
     ports:
       - 8086:8081
       - 8087:80

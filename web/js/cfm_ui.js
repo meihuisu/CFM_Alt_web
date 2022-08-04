@@ -10,6 +10,17 @@ var big_map=0; // 0,1(some control),2(none)
 var seismicity_loaded = false;
 var seismicity_from_cache = true;
 
+//  got to another set of data on same host different port
+function gotoOtherDB() {
+
+  let protocol=window.location.protocol;
+  let hostname=window.location.hostname;
+  let port=$('#gotoDB').val();
+  let newLoc=protocol+"//"+hostname+":"+port;
+window.console.log("new Loc >>"+newLoc);
+  window.open(newLoc);
+}
+
 function _toMedView()
 {
 $('#top-intro').css("display", "none");
