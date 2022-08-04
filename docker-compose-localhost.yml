@@ -22,6 +22,7 @@ services:
       CFM_DATASET: CFM6_PREFERRED
       CFM_BTN_LABEL: ALT
       CFM_DB_PORT: 8086 
+      CFM_DB_PATHNAME: cfm-alt-viewer
     ports:
       - 8082:8081
       - 8083:80
@@ -36,7 +37,15 @@ services:
       CFM_DATASET: CFM6_ALTERNATIVE
       CFM_BTN_LABEL: MAIN 
       CFM_DB_PORT: 8082 
+      CFM_DB_PATHNAME: cfm-viewer
     ports:
       - 8086:8081
       - 8087:80
+
+#cfm_web_db  0.0.0.0:5432->5432/tcp, :::5432->5432/tcp cfm_web_db_1
+#cfm_web_web 0.0.0.0:8083->80/tcp, :::8083->80/tcp, 0.0.0.0:8082->8081/tcp, :::8082->8081/tcp   cfm_web_web_1
+#cgm_web_db  0.0.0.0:5433->5432/tcp, :::5433->5432/tcp  cgm_web_db_1
+#cgm_web_web 0.0.0.0:8085->80/tcp, :::8085->80/tcp, 0.0.0.0:8084->8081/tcp, :::8084->8081/tcp   cgm_web_web_1
+
+
 

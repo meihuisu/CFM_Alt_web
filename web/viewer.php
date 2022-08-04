@@ -4,6 +4,7 @@ $header = getHeader("Viewer");
 $cfm_dataset = getenv("CFM_DATASET");
 $cfm_btn_label = getenv("CFM_BTN_LABEL");
 $cfm_db_port = getenv("CFM_DB_PORT");
+$cfm_db_pathname = getenv("CFM_DB_PATHNAME");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -404,7 +405,8 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
 <div class="row">
 
 <!-- XX switch between preferred/alternative set -->
-<input type="text" id="gotoDB" value=<?php echo $cfm_db_port ?> style="display:none">
+<input type="text" id="gotoPort" value=<?php echo $cfm_db_port ?> style="display:none">
+<input type="text" id="gotoPathname" value=<?php echo $cfm_db_pathname ?> style="display:none">
 <button id="gotoDBBtn" class="btn" onclick='gotoOtherDB();' title="Go to <?php echo $cfm_btn_label ?>" style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.25rem 0.5rem;margin-left:10px;margin-right:10px;"><span><?php echo $cfm_btn_label ?></span></button>
 
 <!-- XX upload KML/KMZ overlay -->
