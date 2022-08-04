@@ -483,7 +483,7 @@ class="custom-select custom-select-sm" style="width:16rem; padding:0.25rem 0.5re
             <div id="phpResponseTxt"></div>
         </div>
 
-        <div id="top-map" class="col-7" style="padding-left:0.25rem">
+        <div id="top-map" class="col-7" style="padding-left:0rem">
             <div class="w-100 mb-1" id='CFM_plot'
 		 style="position:relative;border:solid 1px #ced4da; height:576px;">
             </div>
