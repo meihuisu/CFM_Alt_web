@@ -27,10 +27,11 @@ function gotoOtherDB() {
   if(port === "") {
      newLoc=protocol+"//"+hostname+"/"+npathname+"/";
      } else {
-       newLoc=protocol+"//"+hostname+":"+port;
+       newLoc=protocol+"//"+hostname+":"+nport;
   }
   window.console.log("new Loc >>"+newLoc);
-  window.open(newLoc);
+  location.replace(newLoc);
+//  window.open(newLoc);
 }
 
 function _toMedView()

@@ -46,6 +46,3 @@ services:
 #cfm_web_web 0.0.0.0:8083->80/tcp, :::8083->80/tcp, 0.0.0.0:8082->8081/tcp, :::8082->8081/tcp   cfm_web_web_1
 #cgm_web_db  0.0.0.0:5433->5432/tcp, :::5433->5432/tcp  cgm_web_db_1
 #cgm_web_web 0.0.0.0:8085->80/tcp, :::8085->80/tcp, 0.0.0.0:8084->8081/tcp, :::8084->8081/tcp   cgm_web_web_1
-
-
-
