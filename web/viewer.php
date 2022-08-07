@@ -181,7 +181,7 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
 
 <!-- top-control -->
     <div id="top-control">
-      <div id="controls-container" class="row d-flex mb-1" style="display:" >
+      <div id="controls-container" class="row d-flex mb-2" style="display:" >
 <!-- XX RESET -->
         <div class="col-3 mb-0">
              <div class="input-group filters" style="min-width:68%">
@@ -203,11 +203,11 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
 
                 <div>
                   <button id="recordReferenceBtn" title="Record a reference fault set"
-                      class="btn btn-default cfm-small-btn pl-2 mt-2" onclick="recordActiveReference()" disabled>
+                      class="btn btn-default cfm-small-btn pl-2 mt-1" onclick="recordActiveReference()" disabled>
                       <span class="glyphicon glyphicon-record"></span>
                   </button>
                   <button id="lastRecordedReferenceBtn" title="Refresh to last recorded reference fault set"
-                      class="btn btn-default cfm-small-btn mt-2" onclick="resetLastRecordReference()" disabled>
+                      class="btn btn-default cfm-small-btn mt-1" onclick="resetLastRecordReference()" disabled>
                       <span class="fas fa-step-backward"></span>
                   </button>
                 </div>
@@ -408,14 +408,14 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
 <input type="text" id="gotoPathname" value=<?php echo $cfm_goto_pathname ?> style="display:none">
 <input type="text" id="gotoOption" value=<?php echo $cfm_goto_option ?> style="display:none">
 
-<select id="dataSelect" onchange="gotoOtherDB(this.value)" class="custom-select custom-select-sm" style="width:auto;padding:0.25rem 0.5rem">
+<select id="dataSelect" onchange="gotoOtherDB(this.value)" class="custom-select custom-select-sm" style="width:auto;min-width:10rem;margin-right:5px;">
    <option <?php  if($cfm_goto_option == 0) echo "selected" ?> value="0">Preferred 6.0</option>
    <option <?php  if($cfm_goto_option == 1) echo "selected" ?> value="1">Alternatives 6.0</option>
 </select>
 
 <!-- XX upload KML/KMZ overlay -->
 <input id="fileKML" type='file' onchange='uploadKMLFile(this.files)' style='display:none;'></input>
-<button id="kmlBtn" class="btn" onclick='javascript:document.getElementById("fileKML").click();' title="Upload your own kml/kmz file to be displayed on the map interface. We currently support points, lines, paths, polygons, and image overlays (kmz only)." style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.25rem 0.5rem;"><span>Upload kml/kmz</span></button>
+<button id="kmlBtn" class="btn" onclick='javascript:document.getElementById("fileKML").click();' title="Upload your own kml/kmz file to be displayed on the map interface. We currently support points, lines, paths, polygons, and image overlays (kmz only)." style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.15rem 0.5rem;"><span>Upload kml/kmz</span></button>
 
 <button id="kmlSelectBtn" class="btn cfm-small-btn" title="Show/Hide uploaded kml/kmz files"  style="padding:0.25rem 0.5rem;display:none" onclick='updateKMLSelect()'  data-toggle="modal" data-target="#modalkmlselect"><span class="fas fa-circle"></span></button>
 
@@ -424,12 +424,12 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
         <div class="col-3 mt-1 pl-0"> 
 <!-- XX Sesimicity -->
 <div id="loadSeismicity" class="row" style="width:20rem;display:; ">
-<button id="quakesBtn" class="btn" onClick="loadSeismicity()" title="This loads the updated Hauksson et al. (2012) and Ross et al. (2019) relocated earthquake catalogs and provides a pull-down menu with options to color by depth, magnitude, or time. Significant historical events (1900-2021 >M6.0) are shown with red dots. These can be turned on/off by clicking on the red dot which appears here once the catalogs have been loaded" style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.25rem 0.5rem;display:">Load relocated seismicity</button>
+<button id="quakesBtn" class="btn" onClick="loadSeismicity()" title="This loads the updated Hauksson et al. (2012) and Ross et al. (2019) relocated earthquake catalogs and provides a pull-down menu with options to color by depth, magnitude, or time. Significant historical events (1900-2021 >M6.0) are shown with red dots. These can be turned on/off by clicking on the red dot which appears here once the catalogs have been loaded" style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.15rem 0.5rem;display:;">Load relocated seismicity</button>
 </div>
 
 <div id="showSeismicity" class="row" style="width:20rem; display:none;">
 <select id="seismicitySelect" onchange="changePixiOverlay(this.value)"
-class="custom-select custom-select-sm" style="width:16rem; padding:0.25rem 0.5rem">
+class="custom-select custom-select-sm" style="width:auto;min-width:16rem;">
    <option value="none">No seismicity</option>
    <option selected value="haukssondepth">Hauksson et al. by depth</option>
    <option value="haukssonmag">Hauksson et al. by magnitude</option>
@@ -447,12 +447,12 @@ class="custom-select custom-select-sm" style="width:16rem; padding:0.25rem 0.5re
 </div>
         </div>
 <!-- Map Select -->
-        <div class="col-3 d-flex justify-content-end">
-	    <div class="input-group input-group-sm cfm-input-group mt-2" id="map-controls">
-                <div class="input-group-prepend" title="Change the basemap imagery" style="margin-left:-55px">
+        <div class="col-3 d-flex mt-1 justify-content-end">
+	    <div class="input-group input-group-sm cfm-input-group" id="map-controls">
+                <div class="input-group-prepend" title="Change the basemap imagery" style="margin-left:-70px;">
                     <label class="input-group-text" for="mapLayer">Select Map Type</label>
                 </div>
-                <select id="mapLayer" class="custom-select custom-select-sm" style="width:auto;padding:0.25rem 0.5rem"
+                <select id="mapLayer" class="custom-select custom-select-sm" style="width:auto;min-width:12rem;"
 onchange="switchLayer(this.value);">
                     <option selected value="esri topo">ESRI Topographic</option>
                     <option value="esri NG">ESRI National Geographic</option>
