@@ -11,10 +11,14 @@ var seismicity_loaded = false;
 var seismicity_from_cache = true;
 
 //  got to another set of data on same host different port
-function gotoOtherDB() {
-
+function gotoOtherDB(option) {
 //  http://localhost:8082
 //  http://moho.scec.org/cfm-viewer/
+  let noption=$('#gotoOption').val();
+  if(option == noption) {
+    return; // do nothing
+  }
+
   let protocol=window.location.protocol;
   let hostname=window.location.hostname;
   let port=window.location.port;
@@ -31,7 +35,6 @@ function gotoOtherDB() {
   }
   window.console.log("new Loc >>"+newLoc);
   location.replace(newLoc);
-//  window.open(newLoc);
 }
 
 function _toMedView()

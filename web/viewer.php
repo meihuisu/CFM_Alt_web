@@ -1,10 +1,9 @@
 <?php
 require_once("php/navigation.php");
 $header = getHeader("Viewer");
-$cfm_dataset = getenv("CFM_DATASET");
-$cfm_btn_label = getenv("CFM_BTN_LABEL");
-$cfm_db_port = getenv("CFM_DB_PORT");
-$cfm_db_pathname = getenv("CFM_DB_PATHNAME");
+$cfm_goto_option = getenv("CFM_GOTO_OPTION");
+$cfm_goto_port = getenv("CFM_GOTO_PORT");
+$cfm_goto_pathname = getenv("CFM_GOTO_PATHNAME");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -164,7 +163,7 @@ $cfm_db_pathname = getenv("CFM_DB_PATHNAME");
 <!-- top-intro -->
     <div id="top-intro" style="display:">
 <p>
-The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fault Model</a>(<?php echo $cfm_dataset ?>) are three-dimensional and non-planar; however, to simplify browsing the model, the viewer below provides a two-dimensional map-based view of the SCEC CFM version 5.3 preferred fault set. The alternative fault representations are only provided in the complete CFM archive available for download on the <a href="https://www.scec.org/research/cfm">CFM homepage</a>. Here, the viewer allows users to view and download fault geometry data as well as metadata for selected faults rather than downloading the entire CFM model archive. Once faults are selected, the “PLOT3D” button can be used to view the selected faults in a basic CAD-like environment. See the user guide for more details and site usage instructions.
+The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fault Model</a> are three-dimensional and non-planar; however, to simplify browsing the model, the viewer below provides a two-dimensional map-based view of the SCEC CFM version 5.3 preferred fault set. The alternative fault representations are only provided in the complete CFM archive available for download on the <a href="https://www.scec.org/research/cfm">CFM homepage</a>. Here, the viewer allows users to view and download fault geometry data as well as metadata for selected faults rather than downloading the entire CFM model archive. Once faults are selected, the “PLOT3D” button can be used to view the selected faults in a basic CAD-like environment. See the user guide for more details and site usage instructions.
 </p>
     </div> <!-- top-intro -->
 
@@ -204,7 +203,7 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
 
                 <div>
                   <button id="recordReferenceBtn" title="Record a reference fault set"
-                      class="btn btn-default cfm-small-btn pl-4 mt-2" onclick="recordActiveReference()" disabled>
+                      class="btn btn-default cfm-small-btn pl-2 mt-2" onclick="recordActiveReference()" disabled>
                       <span class="glyphicon glyphicon-record"></span>
                   </button>
                   <button id="lastRecordedReferenceBtn" title="Refresh to last recorded reference fault set"
@@ -401,13 +400,18 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
                 </div>
             </div>
         </div>
-	<div class="col-2 pl-0 mt-1">
+	<div class="col-3 pl-0 mt-1">
 <div class="row">
 
 <!-- XX switch between preferred/alternative set -->
-<input type="text" id="gotoPort" value=<?php echo $cfm_db_port ?> style="display:none">
-<input type="text" id="gotoPathname" value=<?php echo $cfm_db_pathname ?> style="display:none">
-<button id="gotoDBBtn" class="btn" onclick='gotoOtherDB();' title="Go to <?php echo $cfm_btn_label ?>" style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.25rem 0.5rem;margin-left:10px;margin-right:10px;"><span><?php echo $cfm_btn_label ?></span></button>
+<input type="text" id="gotoPort" value=<?php echo $cfm_goto_port ?> style="display:none">
+<input type="text" id="gotoPathname" value=<?php echo $cfm_goto_pathname ?> style="display:none">
+<input type="text" id="gotoOption" value=<?php echo $cfm_goto_option ?> style="display:none">
+
+<select id="dataSelect" onchange="gotoOtherDB(this.value)" class="custom-select custom-select-sm" style="width:auto;padding:0.25rem 0.5rem">
+   <option <?php  if($cfm_goto_option == 0) echo "selected" ?> value="0">Preferred 6.0</option>
+   <option <?php  if($cfm_goto_option == 1) echo "selected" ?> value="1">Alternatives 6.0</option>
+</select>
 
 <!-- XX upload KML/KMZ overlay -->
 <input id="fileKML" type='file' onchange='uploadKMLFile(this.files)' style='display:none;'></input>
@@ -419,11 +423,11 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
         </div>
         <div class="col-3 mt-1 pl-0"> 
 <!-- XX Sesimicity -->
-<div id="loadSeismicity" class="row" style="width:20rem;display:; margin-left:0.25rem">
+<div id="loadSeismicity" class="row" style="width:20rem;display:; ">
 <button id="quakesBtn" class="btn" onClick="loadSeismicity()" title="This loads the updated Hauksson et al. (2012) and Ross et al. (2019) relocated earthquake catalogs and provides a pull-down menu with options to color by depth, magnitude, or time. Significant historical events (1900-2021 >M6.0) are shown with red dots. These can be turned on/off by clicking on the red dot which appears here once the catalogs have been loaded" style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.25rem 0.5rem;display:">Load relocated seismicity</button>
 </div>
 
-<div id="showSeismicity" class="row" style="width:20rem; display:none; margin-left:0.25rem">
+<div id="showSeismicity" class="row" style="width:20rem; display:none;">
 <select id="seismicitySelect" onchange="changePixiOverlay(this.value)"
 class="custom-select custom-select-sm" style="width:16rem; padding:0.25rem 0.5rem">
    <option value="none">No seismicity</option>
@@ -439,16 +443,17 @@ class="custom-select custom-select-sm" style="width:16rem; padding:0.25rem 0.5re
    <option value="historicaltime">Historical by time</option>
 -->
 </select>
-<button id="toggleHistoricalBtn" class="btn cfm-small-2-btn" title="Show/Hide significant historic earthquakes (M6+) since 1900" style="margin-left:0.25rem" onclick="toggleHistorical()"><span class="fas fa-circle fa-xs"></span></button>
+<button id="toggleHistoricalBtn" class="btn cfm-small-2-btn" title="Show/Hide significant historic earthquakes (M6+) since 1900" onclick="toggleHistorical()"><span class="fas fa-circle fa-xs"></span></button>
 </div>
         </div>
 <!-- Map Select -->
-        <div class="col-4 d-flex justify-content-end">
+        <div class="col-3 d-flex justify-content-end">
 	    <div class="input-group input-group-sm cfm-input-group mt-2" id="map-controls">
-                <div class="input-group-prepend" title="Change the basemap imagery">
+                <div class="input-group-prepend" title="Change the basemap imagery" style="margin-left:-55px">
                     <label class="input-group-text" for="mapLayer">Select Map Type</label>
                 </div>
-                <select id="mapLayer" class="custom-select custom-select-sm" style="width:auto;" onchange="switchLayer(this.value);">
+                <select id="mapLayer" class="custom-select custom-select-sm" style="width:auto;padding:0.25rem 0.5rem"
+onchange="switchLayer(this.value);">
                     <option selected value="esri topo">ESRI Topographic</option>
                     <option value="esri NG">ESRI National Geographic</option>
                     <option value="esri imagery">ESRI Imagery</option>
