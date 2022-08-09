@@ -471,6 +471,7 @@ div.mapData {
           background: transparent;
           color: red;
           border: none;
+          display: inline-block;
           padding: 0rem 0.2rem 0rem 0.3rem;
           }
 
@@ -478,6 +479,7 @@ div.mapData {
           color: #990000;
           outline:0 !important;
           border: none;
+          display: inline-block;
           }
 
 div.button-container button {
