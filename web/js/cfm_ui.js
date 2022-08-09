@@ -43,7 +43,7 @@ $('#top-intro').css("display", "none");
 $('#searchResult').css("display", "none");
 $('#infoData').removeClass('col-5').addClass('col-0');
 $('#top-map').removeClass('col-7').addClass('row');
-$('#actualData').removeClass('pl-2').addClass('pl-4');
+$('#top-map').removeClass('pl-1').addClass('pl-0');
 $('#mapDataBig').addClass('col-12').removeClass('row');
 resize_map();
 }
@@ -86,7 +86,7 @@ $('#top-intro').css("display", "");
 $('#searchResult').css("display", "");
 $('#infoData').addClass('col-5').removeClass('col-0');
 $('#top-map').removeClass('row').addClass('col-7');
-$('#actualData').removeClass('pl-4').addClass('pl-2');
+$('#top-map').removeClass('pl-1').addClass('pl-0');
 $('#mapDataBig').removeClass('col-12').addClass('row');
 resize_map();
 }
